@@ -25,7 +25,10 @@ import Video from './componant/Video';
 import APPS from './APPS';
 import AssignmentsPage from './componant/AssignmentsPage';
 import PdfList from './componant/PdfList';
-import PricingCard from './componant/PricingCard'
+import PricingCard from './componant/PricingCard';
+import AddQuestion from './componant/AddQuestion';
+import LessonTable from './componant/LessonTable';
+import ListStudent from './componant/ListStudent';
 
 function App() {
   return (
@@ -39,7 +42,11 @@ function App() {
         <Route path="/AssignmentsPage" element={<AssignmentsPage />} />
         <Route path="/PdfList" element={<PdfList />} />
         <Route path="/PricingCard" element={<PricingCard />} />
+        <Route path="/AddQuestion" element={<AddQuestion />} />
+        <Route path="/LessonTable" element={<LessonTable />} />
+        <Route path="/ListStudent" element={<ListStudent />} />
 
+        
         
         {/* Define other routes here */}
       </Routes>

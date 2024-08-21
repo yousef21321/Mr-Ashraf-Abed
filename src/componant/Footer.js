@@ -36,7 +36,7 @@ function Footer() {
                     <div style={styles.footerColumn}>
                         <div style={styles.footerText}></div>
                         <div style={styles.footerLinks}>
-                            {['Facebook', 'التواصل', '0100000000000'].map((text, index) => (
+                            {['Facebook', 'التواصل', '01067123409','المشرف','01028662054'].map((text, index) => (
                                 <div key={index} style={styles.footerLink}>
                                     <a style={{ color: "white" }} href='https://www.facebook.com/AshrafAbed2020'>{text}</a>
                                 </div>

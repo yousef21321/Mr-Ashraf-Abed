@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const AssignmentsPage = () => {
-    const [questions, setQuestions] = useState([]); // Ensure initial state is an array
+    const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState({});
     const [score, setScore] = useState(null);
     const [error, setError] = useState(null);
     const [submitted, setSubmitted] = useState(false);
     const navigate = useNavigate();
+
     const styles = {
         container: {
             fontFamily: 'Arial, sans-serif',
@@ -58,6 +60,7 @@ const AssignmentsPage = () => {
             color: 'red',
         },
         score: {
+            color:'#000',
             textAlign: 'center',
             fontSize: '20px',
             marginTop: '20px',
@@ -68,18 +71,11 @@ const AssignmentsPage = () => {
         const fetchQuestions = async () => {
             try {
                 const lesson_id = localStorage.getItem('lesson_id');
-                const response = await fetch(`https://leader-acadmy.hwnix.com/api/questions/lesson/${lesson_id}`);
-                const data = await response.json();
-
-                // Ensure the data is an array
-                if (Array.isArray(data)) {
-                    setQuestions(data);
-                } else {
-                    setError('لا يوجد واجبات ');
-                }
+                const response = await axios.get(`https://leader-acadmy.hwnix.com/api/questions/lesson/${lesson_id}`);
+                setQuestions(response.data);
             } catch (error) {
-                // setError('لا يوجد واجبات ');
                 console.error('Error fetching questions:', error);
+                setError('لا يوجد واجبات');
             }
         };
 
@@ -93,15 +89,38 @@ const AssignmentsPage = () => {
         });
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         let correctAnswers = 0;
         questions.forEach((question) => {
             if (answers[question.id] && answers[question.id] === question.correct_answer) {
                 correctAnswers += 1;
             }
         });
-        setScore(correctAnswers);
+
+        const calculatedScore = correctAnswers;
+        setScore(calculatedScore);
         setSubmitted(true);
+
+        try {
+            const userId = localStorage.getItem('id');
+            const lessonId = localStorage.getItem('lesson_id');
+
+            const response = await axios.post('https://leader-acadmy.hwnix.com/api/submit-score', {
+                user_id: userId,
+                lesson_id: lessonId,
+                score: calculatedScore,
+            });
+
+            console.log('Score submitted successfully:', response.data);
+            alert(response.data.message); // Show success message
+        } catch (error) {
+            console.error('Error submitting score:', error);
+            if (error.response) {
+                console.error('Response data:', error.response.data);
+                console.error('Response status:', error.response.status);
+                console.error('Response headers:', error.response.headers);
+            }
+        }
     };
 
     const handleBack = () => {

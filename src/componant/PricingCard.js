@@ -91,7 +91,7 @@ const PricingCard = () => {
       if (result.message === "User has a valid code.") {
         navigate('/ProfileCard');
       } else if (error.response.data.message === "MAC address mismatch." || error.response.data.message === "No code found for this user and lesson.") {
-        setErrorMessages(prev => ({ ...prev, [lesson.id]: "تأكد من دخولك من جهاز واحد." }));
+        setErrorMessages(prev => ({ ...prev, [lesson.id]: "برجاء الدخول من اول جهاز تم الاشتراك عليه" }));
         // handleSubscribeClick(lesson);
       } else {
         setErrorMessages(prev => ({ ...prev, [lesson.id]: "الكود غير صالح أو يوجد مشكلة في الكود." }));
@@ -100,7 +100,7 @@ const PricingCard = () => {
       // Check if error.response exists and has data
        if (error.response.data.message === "MAC address mismatch." || error.response.data.message === "No code found for this user and lesson.") {
         console.log(error.response.data.message);
-        setErrorMessages(prev => ({ ...prev, [lesson.id]: "تأكد من دخولك من جهاز واحد." }));
+        setErrorMessages(prev => ({ ...prev, [lesson.id]:"برجاء الدخول من اول جهاز تم الاشتراك عليه" }));
 
       } else {
         console.log(error.message); // For network or other errors

@@ -62,7 +62,7 @@ const SubscriptionModal = ({ course, onClose }) => {
   
       if (response.data.message === "Code validated and updated successfully.") {
         console.log("Code validated successfully");
-        setError('تم تفعيل المحاضره');
+        setError(' تم تفعيل المحاضره برجاء الضغط على دخول');
         navigate('/PricingCard'); // Navigate on success
         localStorage.setItem('subscriptionCode', subscriptionCode); // Store subscriptionCode in localStorage
       } else {
@@ -71,7 +71,7 @@ const SubscriptionModal = ({ course, onClose }) => {
     } catch (error) {
       console.error("Error:", error.response ? error.response.data : error.message);
       if (error.response && error.response.data.message === "Code is already used.") {
-        setError("غلط ياض");
+        setError("انت بالفعل مشترك");
       } else {
         console.log(error.response);
         console.log(error.response.data.message);

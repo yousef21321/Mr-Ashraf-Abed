@@ -437,7 +437,7 @@ function APPS() {
             </h1>
             <h2 style={{ top: '35%', right: '-48vw', color: '#454545', fontSize: '2vw', fontFamily: 'Lemonada', fontWeight: 575, wordWrap: 'break-word', textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)", position: 'absolute' }}>
   صانع الأوائل
-</h2>     
+</h2>        
 <div style={{ width: "50vw", left: "47vw", top: "61%", position: "absolute", textAlign: "right", color: "black", fontSize: "1.5vw", fontFamily: "Lemonada", fontWeight: "380", lineHeight: "1.8vw" }}>
   مرحبًا بكم في منصه أشرف عابد، حيث يجتمع الشغف بالتعليم مع الأداء الرائع. يتميز مستر أشرف عابد بقدرات استثنائية في تعليم اللغة الإنجليزية، مقدماً أساليب تعليمية مبتكرة تضمن تجربة تعلم فعالة وممتعة.  حيث يلتزم بتقديم محتوى تعليمي ذو جودة عالية يعزز مهارات الطلاب ويحقق نتائج ملحوظة. انضموا إلينا واستمتعوا بتعلم اللغة الإنجليزية بأسلوب مميز يتناسب مع احتياجاتكم التعليمية. احجزوا دروسكم الآن وابدأوا رحلتكم التعليمية مع الأفضل!
 </div>

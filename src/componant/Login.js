@@ -30,7 +30,7 @@ const Login = () => {
       console.log('Login Success:', data);
       // You can add navigation here if needed
     } catch (error) {
-      setError('Login Failed: ' + (error.response ? error.response.data : error.message));
+      setError('Login Failed: ' +'مازال الايميل تحت المراجعه 🔎📝');
       console.error('Login Failed:', error.response ? error.response.data : error.message);
     }
   };
