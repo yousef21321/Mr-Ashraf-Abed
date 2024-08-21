@@ -73,9 +73,11 @@ export default function Video() {
       console.error('Logout Failed:', error.response ? error.response.data : error.message);
     }
   };
-const handleLec = async () => {
-  navigate('/ProfileCard')
-}
+
+  const handleLec = () => {
+    navigate('/ProfileCard');
+  };
+
   return (
     <>
       <div className="landing-page-wrapper">
@@ -83,17 +85,15 @@ const handleLec = async () => {
           <div className="profile-header-content">
             <div className="logout-button">
               <button className="nav-button create-account-button" onClick={handleLogout}>تسجيل الخروج</button>
-              <div className="logout-button">
-
-            <button className="nav-button create-account-button" onClick={handleLec}>المحاضرات</button>
             </div>
+            <div className="logout-button">
+              <button className="nav-button create-account-button" onClick={handleLec}>المحاضرات</button>
             </div>
-
             <div className="profile-name">Mr.Ashraf Abed</div>
           </div>
         </header>
 
-        <section className="video-section" style={{width: '1220px'}}>
+        <section className="video-section">
           <div className="video-container">
             {videoUrl ? (
               <iframe
@@ -133,9 +133,8 @@ const handleLec = async () => {
             </div>
           </div>
         </div>
-<Footer/>
+        <Footer />
       </div>
     </>
   );
 }
-
