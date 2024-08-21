@@ -115,8 +115,12 @@ function APPS() {
   };
 
   const handleLogin = () => {
-    navigate('/Login')
-  };
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      navigate('/PricingCard');
+    } else {
+      navigate('/Login');
+    }  };
 
   const handlePrevClick = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
@@ -141,6 +145,27 @@ function APPS() {
       console.error(`Section with id "${id}" not found`);
     }
   };
+  const handleNavigation = () => {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      navigate('/PricingCard');
+    } else {
+      navigate('/Login');
+    }
+  };
+
+
+  const videoSrc = "https://drive.google.com/file/d/1poPs2t3VRiywXlE_sCeZh0SgFF5o72v5/preview";
+
+const obfuscateUrl = (url) => {
+  return btoa(url); // Base64 encode the URL
+};
+
+const deobfuscateUrl = (encodedUrl) => {
+  return atob(encodedUrl); // Base64 decode the URL
+};
+
+const obfuscatedVideoSrc = obfuscateUrl(videoSrc);
   return (
       <>
       <ScrollProgressBar/>
@@ -481,15 +506,15 @@ function APPS() {
       </div>
     </div>
     <div style={{ width: "50vw", height: "35vw", background: "#D9D9D9", borderRadius: "20px" }}>
-      <iframe
-        style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '20px' }}
-        src="https://drive.google.com/file/d/1poPs2t3VRiywXlE_sCeZh0SgFF5o72v5/preview"
-        title="Google Drive file"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-      />
+    <iframe
+      style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '20px' }}
+      src={deobfuscateUrl(obfuscatedVideoSrc)}
+      title="Google Drive file"
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerPolicy="strict-origin-when-cross-origin"
+      allowFullScreen
+    />
     </div>
   </div>
 </div>
@@ -543,13 +568,18 @@ function APPS() {
     justifyContent: "center",
     alignItems: "center"
 }}>
-    <a style={{
-        color: "#000",
-        fontSize: '1.5vw',
-        fontFamily: 'Lemonada',
-        fontWeight: 575,
-        textDecoration: 'none'
-    }} href="/Login">عرض المزيد</a>
+      <a
+        style={{
+          color: "#000",
+          fontSize: '1.5vw',
+          fontFamily: 'Lemonada',
+          fontWeight: 575,
+          textDecoration: 'none'
+        }}
+        onClick={handleNavigation}
+      >
+        عرض المزيد
+      </a>
 </div>
 
 

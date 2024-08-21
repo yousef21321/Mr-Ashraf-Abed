@@ -100,8 +100,11 @@ export default function Video() {
                 title="Video"
                 src={videoUrl}
                 width="100%"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
                 height="100%"
-                allow="autoplay"
               ></iframe>
             ) : (
               <p>Loading video...</p>

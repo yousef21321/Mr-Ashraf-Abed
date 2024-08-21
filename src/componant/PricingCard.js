@@ -141,7 +141,6 @@ const PricingCard = () => {
             <div style={{ display: "flex", gap: "8px" }}>
               <Link to="/" style={styles.link}><button style={styles.button}>Home</button></Link>
               <Link to="/" style={styles.link}><button style={styles.button}>About</button></Link>
-              <Link to="/ProfileCard" style={styles.link}><button style={styles.button}>Lecture</button></Link>
             </div>
             <div className="profile-name">Mr.Ashraf Abed</div>
           </div>

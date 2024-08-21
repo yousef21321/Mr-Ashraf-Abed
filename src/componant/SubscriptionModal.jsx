@@ -71,7 +71,7 @@ const SubscriptionModal = ({ course, onClose }) => {
     } catch (error) {
       console.error("Error:", error.response ? error.response.data : error.message);
       if (error.response && error.response.data.message === "Code is already used.") {
-        setError("انت بالفعل مشترك");
+        setError("🔎 الكود مستخدم من قبل");
       } else {
         console.log(error.response);
         console.log(error.response.data.message);

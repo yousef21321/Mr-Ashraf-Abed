@@ -30,7 +30,7 @@ const Login = () => {
       console.log('Login Success:', data);
       // You can add navigation here if needed
     } catch (error) {
-      setError('Login Failed: ' +'مازال الايميل تحت المراجعه 🔎📝');
+      setError('Login Failed: ' +'برجاء التاكد من الايميل او كلمه السر 🚫');
       console.error('Login Failed:', error.response ? error.response.data : error.message);
     }
   };
@@ -70,15 +70,7 @@ const BachHome =async (e) => {
             />
           </div>
         </div>
-        <div className="options">
-          <div className="remember-me">
-            <input type="checkbox" id="remember" />
-            <label htmlFor="remember">Remember me</label>
-          </div>
-          <div className="forgot-password">
-            <a href="#">Forget Password?</a>
-          </div>
-        </div>
+
         <div className="login-button">
           <button type="submit">Log In</button>
         </div>
