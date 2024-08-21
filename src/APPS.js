@@ -526,7 +526,7 @@ function APPS() {
     width: "100%",
     height: "170vh",
     position: "absolute",
-    top: "30%",
+    top: "28%",
     background: "linear-gradient(180deg, rgba(96, 128, 191, 0) 0%, rgba(96, 128, 191, 0.25) 25%, rgba(96, 128, 191, 0.50) 50%, #6080BF 100%)",
     backdropFilter: "blur(13px)"
 }}></div>
