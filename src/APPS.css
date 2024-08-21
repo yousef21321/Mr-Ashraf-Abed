@@ -1,0 +1,129 @@
+/* Latest Courses Section */
+.latest-courses {
+  width: 102%;
+  height: auto;
+  position: relative;
+  background: #EDF3FF;
+  margin: 0 auto;
+}
+
+.latest-courses-header {
+  height: auto;
+  padding: 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-text {
+  color: #454545;
+  font-size: 2vw;
+  font-family: 'Lemonada', sans-serif;
+  font-weight: 575;
+  word-wrap: break-word;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.course-cards {
+  width: 45%; /* Increased width of the container */
+  background: #EDF3FF;
+  padding: 2vw 1vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Increased min width of cards */
+  gap: 2vw; /* Adjusted gap for better spacing */
+}
+
+/* Additional adjustments for card size */
+.lesson-card {
+  width: 100%; /* Ensures the card takes full width of the grid item */
+  height: auto; /* Allows the height to adjust according to content */
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 2vw; /* Increased padding inside the card */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.lesson-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+.lesson-card:hover {
+  transform: perspective(1000px) rotateY(10deg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.lesson-info {
+  padding: 1vw;
+}
+
+.lesson-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5vw;
+}
+
+.lesson-author {
+  color: #525252;
+  font-size: 1rem;
+  font-family: 'Manrope', sans-serif;
+  font-weight: bold;
+}
+
+.lesson-title {
+  color: #141414;
+  font-size: 1.5vw;
+  margin-top: 0.5vw;
+  font-family: 'Manrope', sans-serif;
+  font-weight: bold;
+}
+
+.lesson-description {
+  color: #555;
+  font-size: 1.2vw;
+  font-family: 'Manrope', sans-serif;
+}
+
+.lesson-tags {
+  display: flex;
+  gap: 0.5vw;
+  margin-top: 1vw;
+}
+
+.tag {
+  background: #d1e0ff;
+  padding: 0.5vw 1vw;
+  border-radius: 5px;
+  color: #6941C6;
+  font-size: 0.9rem;
+  font-family: 'Manrope', sans-serif;
+}
+
+.lessons-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  gap: 6.5vw; /* Spacing between items */
+  justify-content: center; /* Center the grid content */
+  width: 100%; /* Full width of the container */
+  padding: 2vw; /* Padding around the grid */
+}
+
+/* Make the grid responsive */
+@media (max-width: 1200px) {
+  .lessons-section {
+      grid-template-columns: repeat(2, 1fr); /* 2 cards per row on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .lessons-section {
+      grid-template-columns: 1fr; /* 1 card per row on small screens */
+  }
+}

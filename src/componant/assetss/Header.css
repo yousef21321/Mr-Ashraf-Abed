@@ -1,0 +1,60 @@
+.Header {
+    width: 100%;
+    max-width: 1440px;
+    height: 109px;
+    background: #B9CFFC;
+    display: flex;
+    align-items: center;
+    padding: 0 53px;
+    box-sizing: border-box;
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .create-button {
+    background: #5E8CEA;
+    color: white;
+    padding: 6px 8px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-family: 'Lemonada', sans-serif;
+    font-weight: 380;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .socias-links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .nav-buttons {
+    display: flex;
+    gap: 34px;
+  }
+  
+  .nav-button {
+    color: #F5F6F6;
+    font-size: 20px;
+    font-family: 'Lemonada', sans-serif;
+    font-weight: 575;
+    text-decoration: none;
+  }
+  
+  .nav-button:hover {
+    text-decoration: underline;
+  }
+  
+  .name {
+    color: white;
+    font-size: 40px;
+    font-family: 'Lemonada', sans-serif;
+    font-weight: 380;
+  }
+  
