@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const AssignmentsPage = () => {
-    const [questions, setQuestions] = useState([]);
+    const [questions, setQuestions] = useState([]); // Ensure initial state is an array
     const [answers, setAnswers] = useState({});
     const [score, setScore] = useState(null);
+    const [error, setError] = useState(null);
     const [submitted, setSubmitted] = useState(false);
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const styles = {
         container: {
             fontFamily: 'Arial, sans-serif',
@@ -66,11 +67,18 @@ const AssignmentsPage = () => {
     useEffect(() => {
         const fetchQuestions = async () => {
             try {
-                const lesson_id = localStorage.getItem('lesson_id'); // Retrieve lesson_id from localStorage
+                const lesson_id = localStorage.getItem('lesson_id');
                 const response = await fetch(`https://leader-acadmy.hwnix.com/api/questions/lesson/${lesson_id}`);
                 const data = await response.json();
-                setQuestions(data);
+
+                // Ensure the data is an array
+                if (Array.isArray(data)) {
+                    setQuestions(data);
+                } else {
+                    setError('لا يوجد واجبات ');
+                }
             } catch (error) {
+                // setError('لا يوجد واجبات ');
                 console.error('Error fetching questions:', error);
             }
         };
@@ -95,13 +103,19 @@ const AssignmentsPage = () => {
         setScore(correctAnswers);
         setSubmitted(true);
     };
+
     const handleBack = () => {
-        navigate('/Video'); // Navigate to the landing page
+        navigate('/Video');
     };
+
+    if (error) {
+        return <div>{error}</div>;
+    }
+
     return (
         <div style={styles.container}>
             <h1 style={styles.title}>Assignments</h1>
-            {questions.map((question) => (
+            {Array.isArray(questions) && questions.map((question) => (
                 <div key={question.id} style={styles.questionContainer}>
                     <h3 style={styles.questionText}>{question.question_text}</h3>
                     {question.answer_type === 'multiple_choice' && question.options && (
