@@ -49,6 +49,7 @@ body.landing-page {
   aspect-ratio: 16 / 9;
   position: relative;
   background-color: #000;
+  
 }
 
 /* Responsive typography and buttons */
@@ -140,4 +141,9 @@ p {
     font-size: 0.8rem;
     padding: 6px 12px;
   }
+}
+.frammm {
+  outline: none;
+  display: none;
+
 }

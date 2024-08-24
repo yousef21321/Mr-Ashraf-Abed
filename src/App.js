@@ -29,6 +29,8 @@ import PricingCard from './componant/PricingCard';
 import AddQuestion from './componant/AddQuestion';
 import LessonTable from './componant/LessonTable';
 import ListStudent from './componant/ListStudent';
+import UserTable from './componant/UserTable';
+import CreateCodePage from './componant/CreateCodePage';
 
 function App() {
   return (
@@ -45,6 +47,8 @@ function App() {
         <Route path="/AddQuestion" element={<AddQuestion />} />
         <Route path="/LessonTable" element={<LessonTable />} />
         <Route path="/ListStudent" element={<ListStudent />} />
+        <Route path="/UserTable" element={<UserTable />} />
+        <Route path="/Create" element={<CreateCodePage />} />
 
         
         

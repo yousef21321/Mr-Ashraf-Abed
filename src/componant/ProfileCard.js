@@ -1,8 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import FingerprintJS from '@fingerprintjs/fingerprintjs'; // Make sure to install this package
+import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import facebookImage from './Assets/facebook.svg';
 import youtube from './Assets/social-icons-white-youtube.svg';
 import './ProfileCard.css';
@@ -33,11 +32,6 @@ const ProfileCard = () => {
         const educationalLevelId = localStorage.getItem('package_id');
         const authToken = localStorage.getItem('authToken');
   
-        // Log values for debugging
-        console.log("Educational Level ID:", educationalLevelId);
-        console.log("Auth Token:", authToken);
-  
-        // Ensure the values are valid before making the request
         if (!authToken || !educationalLevelId) {
           console.error("No authToken or educationalLevelId found");
           navigate('/login');
@@ -49,15 +43,12 @@ const ProfileCard = () => {
             Authorization: `Bearer ${authToken}`
           }
         });
-  
-        // Check if the response structure matches what you expect
-        console.log("API Response:", response.data);
         
-        setLessons(response.data); // Directly use the array returned
+        setLessons(response.data);
       } catch (err) {
         console.error('Error fetching lessons:', err);
         setError(err);
-        navigate('/login'); // Redirect to login on error
+        alert("لا يوجد محاضرات متاحة.");
       } finally {
         setLoading(false);
       }
@@ -68,22 +59,41 @@ const ProfileCard = () => {
         const fp = await FingerprintJS.load();
         const result = await fp.get();
         setDeviceFingerprint(result.visitorId);
-        localStorage.setItem('deviceFingerprint', result.visitorId); // Store deviceFingerprint in localStorage
+        localStorage.setItem('deviceFingerprint', result.visitorId);
       } catch (err) {
         console.error('Error fetching device fingerprint:', err);
         setErrorMessages(prev => ({ ...prev, global: 'Could not fetch device fingerprint' }));
-        navigate('/login'); // Redirect to login on error
+        navigate('/login');
       }
     };
-  
+
+    const handleKeydown = (event) => {
+      if (event.key === 'Enter') {
+        // Handle Enter key press
+        console.log('Enter key pressed');
+        // Add your specific logic here
+      } else if (event.key === 'Escape') {
+        // Handle Escape key press
+        console.log('Escape key pressed');
+        // Add your specific logic here
+      }
+    };
+
     fetchLessons();
     fetchDeviceFingerprint();
+
+    window.addEventListener('keydown', handleKeydown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeydown);
+    };
   }, [navigate]);
 
   const handleSubmit = async (lesson) => {
-    localStorage.setItem('lesson_id', lesson.id); // Store lesson_id in localStorage
+    localStorage.setItem('lesson_id', lesson.id);
     navigate('/Video');
   };
+
   const handleLogout = async () => {
     const token = localStorage.getItem('authToken');
 
@@ -103,7 +113,7 @@ const ProfileCard = () => {
       navigate('/');
     } catch (error) {
       console.error('Logout Failed:', error.response ? error.response.data : error.message);
-      navigate('/login'); // Redirect to login on logout error
+      navigate('/login');
     }
   };
 
@@ -117,9 +127,9 @@ const ProfileCard = () => {
             <SocialIcon src={youtube} alt="YouTube" href="https://www.youtube.com/channel/UC2_e1-9trV5x3beP_wXQfpw" />
           </div>
           <div style={{ display: "flex", gap: "8px" }}>
-            <Link to="/" style={styles.link}><button style={styles.button}>Home</button></Link>
-            <Link to="/" style={styles.link}><button style={styles.button}>About</button></Link>
-            <Link to="/ProfileCard" style={styles.link}><button style={styles.button}>Lecture</button></Link>
+            <Link to="/" style={styles.link}><button style={styles.button}>الرئسيه</button></Link>
+            <Link to="/" style={styles.link}><button style={styles.button}>عن المنصه</button></Link>
+            <Link to="/PricingCard" style={styles.link}><button style={styles.button}>الحصص الشهريه</button></Link>
           </div>
           <div className="profile-name">Mr.Ashraf Abed</div>
         </div>
@@ -129,7 +139,7 @@ const ProfileCard = () => {
           {loading ? (
             <p>Loading...</p>
           ) : error ? (
-            <p>Error loading lessons: {error.message}</p>
+            <p>❌❌🔎لا يوجد محاضرات </p>
           ) : (
             Array.isArray(lessons) && lessons.map(lesson => (
               <div key={lesson.id} className="lesson-card">
@@ -146,9 +156,8 @@ const ProfileCard = () => {
                     <div className="tag">2nd Prep</div> */}
                   </div>
                   {errorMessages[lesson.id] && (
-                    <p className='error'>{errorMessages[lesson.id]}</p>
+                    <p className='error'>❌❌🔎لا يوجد محاضرات </p>
                   )}
-                  {/* Uncomment if needed */}
                   <div className="lesson-buttons">
                     <button className="lesson-button enter-lecture-button" onClick={() => handleSubmit(lesson)}>دخول للمحاضرة</button>
                   </div>

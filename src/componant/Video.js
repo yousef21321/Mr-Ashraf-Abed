@@ -3,6 +3,8 @@ import './video.css';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
+import ChatComponent from "./ChatComponent";
+import ProfileCard2 from "./ProfileCard2";
 
 const SocialIcon = ({ src, alt, href }) => (
   <div className="social-icon">
@@ -36,7 +38,6 @@ export default function Video() {
           setVideoUrl(data[0].url);
           setVideoTitle(data[0].title);
           setVideoDescription(data[0].description);
-          console.log(data[0].url);
         }
       } catch (error) {
         console.error("Error fetching video:", error);
@@ -45,8 +46,26 @@ export default function Video() {
 
     fetchVideo();
 
+    const handleKeydown = (e) => {
+      // Block F12 key
+      if (e.key === 'F12') {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      // Block Ctrl+U and Ctrl+Shift+I
+      if ((e.ctrlKey && e.key === 'u') || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeydown);
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+
     return () => {
       document.body.classList.toggle("landing-page");
+      document.removeEventListener('keydown', handleKeydown);
+      document.removeEventListener('contextmenu', (e) => e.preventDefault());
     };
   }, [navigate, isAuthenticated]);
 
@@ -136,6 +155,8 @@ export default function Video() {
             </div>
           </div>
         </div>
+        {/* <ProfileCard2/> */}
+        <ChatComponent/>
         <Footer />
       </div>
     </>

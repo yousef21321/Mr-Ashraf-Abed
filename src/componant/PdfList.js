@@ -16,7 +16,7 @@ const PdfList = () => {
         const response = await axios.get(`https://leader-acadmy.hwnix.com/api/pdfs/lesson/${lessonId}`);
         setPdfs(response.data.pdfs);
       } catch (error) {
-        setError('فشل في جلب ملفات PDF.');
+        setError('❌لا يوجد ملفات ');
       } finally {
         setLoading(false);
       }

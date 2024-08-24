@@ -43,10 +43,7 @@ const Signup = () => {
   }
   return (
     <div className="signup-container">
-      <div className="signup-banner">
-        <div className="gradient-overlay"></div>
-        <div className="banner-text">Start Your English Journey Today</div>
-      </div>
+  
       <div className="signup-form">
         <div className="signup-header">
           <h2>Get Started</h2>
@@ -135,7 +132,12 @@ const Signup = () => {
       <div className="login-button">
           <button onClick={BachHome}>الرئسيه</button>
         </div>
+        <div className="signup-banner">
+        <div className="gradient-overlay"></div>
+        <div className="banner-text">Start Your English Journey Today</div>
+      </div>
     </div>
+    
   );
 };
 

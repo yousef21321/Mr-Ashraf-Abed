@@ -27,31 +27,43 @@ const PricingCard = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const navigate = useNavigate();
-
   useEffect(() => {
     const fetchLessons = async () => {
       try {
         const educationalLevelId = localStorage.getItem('educationalLevelId');
         const authToken = localStorage.getItem('authToken');
-
+  
         if (!authToken || !educationalLevelId) {
-          navigate('/login');
+          navigate('/PricingCard');
           return;
         }
-
+  
         const response = await axios.get(
           `https://leader-acadmy.hwnix.com/api/getPackages/1/${educationalLevelId}`, 
           {
             headers: { Authorization: `Bearer ${authToken}` }
           }
         );
-        setLessons(response.data.packages || []);
+  
+        if (response.data.packages && response.data.packages.length > 0) {
+          setLessons(response.data.packages || []);
+        } else {
+          alert("لا يوجد محاضرات متاحة.");
+          setLessons([]);
+        }
+  
       } catch (err) {
         setError(err);
+        if (err.response && err.response.status === 404) {
+          alert("لا يوجد محاضرات متاحة.");
+        } else {
+          alert("حدث خطأ أثناء تحميل المحاضرات.");
+        }
       } finally {
         setLoading(false);
       }
     };
+  
 
     const fetchDeviceFingerprint = async () => {
       try {
@@ -90,24 +102,20 @@ const PricingCard = () => {
     
       if (result.message === "User has a valid code.") {
         navigate('/ProfileCard');
-      } else if (error.response.data.message === "MAC address mismatch." || error.response.data.message === "No code found for this user and lesson.") {
-        setErrorMessages(prev => ({ ...prev, [lesson.id]: "برجاء الدخول من اول جهاز تم الاشتراك عليه" }));
-        // handleSubscribeClick(lesson);
       } else {
         setErrorMessages(prev => ({ ...prev, [lesson.id]: "الكود غير صالح أو يوجد مشكلة في الكود." }));
       }
     } catch (error) {
-      // Check if error.response exists and has data
-       if (error.response.data.message === "MAC address mismatch." || error.response.data.message === "No code found for this user and lesson.") {
-        console.log(error.response.data.message);
-        setErrorMessages(prev => ({ ...prev, [lesson.id]:"برجاء الدخول من اول جهاز تم الاشتراك عليه" }));
-
+      if (error.response) {
+        if (error.response.data.message === "MAC address mismatch." || error.response.data.message === "No code found for this user and lesson.") {
+          setErrorMessages(prev => ({ ...prev, [lesson.id]: "برجاء الدخول من اول جهاز تم الاشتراك عليه" }));
+        } else {
+          setErrorMessages(prev => ({ ...prev, [lesson.id]: "من فضلك ادخل الكود." }));
+        }
       } else {
         console.log(error.message); // For network or other errors
-        setErrorMessages(prev => ({ ...prev, [lesson.id]: "من فضلك ادخل الكود." }));
-
+        setErrorMessages(prev => ({ ...prev, [lesson.id]: "حدث خطأ أثناء التحقق من الكود." }));
       }
-    
     }
   };
 
@@ -127,6 +135,29 @@ const PricingCard = () => {
       navigate('/login');
     }
   };
+  
+  const handleKeydown = (e) => {
+    // Block F12 key
+    if (e.key === 'F12') {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    // Block Ctrl+U and Ctrl+Shift+I
+    if ((e.ctrlKey && e.key === 'u') || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeydown);
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    return () => {
+      document.removeEventListener('keydown', handleKeydown);
+      document.removeEventListener('contextmenu', (e) => e.preventDefault());
+    };
+  }, []);
 
   return (
     <>
@@ -139,8 +170,8 @@ const PricingCard = () => {
               <SocialIcon src={youtube} alt="YouTube" href="https://www.youtube.com/channel/UC2_e1-9trV5x3beP_wXQfpw" />
             </div>
             <div style={{ display: "flex", gap: "8px" }}>
-              <Link to="/" style={styles.link}><button style={styles.button}>Home</button></Link>
-              <Link to="/" style={styles.link}><button style={styles.button}>About</button></Link>
+              <Link to="/" style={styles.link}><button style={styles.button}>الرئيسيه</button></Link>
+              <Link to="/" style={styles.link}><button style={styles.button}>عن المنصه</button></Link>
             </div>
             <div className="profile-name">Mr.Ashraf Abed</div>
           </div>

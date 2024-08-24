@@ -2,7 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import './APPS.css'; 
 import facebookImage from './componant/Assets/Assets/facebook.jpg'; 
 import youtube from './componant/Assets//Assets/youtube.jpg';
-import teacher from './componant/Assets/Assets/Teacher3.png';
+import teacher from './componant/Assets/Assets/11.jpg';
+import teacher22 from './componant/Assets/Assets/22.jpg';
+import teacher33 from './componant/Assets/Assets/33.jpg';
+import teacher44 from './componant/Assets/Assets/44.jpg';
+import teacher5 from './componant/Assets/Assets/55.jpg';
+import teacher6 from './componant/Assets/Assets/66.jpg';
+import teacher7 from './componant/Assets/Assets/77.jpg';
+
 import teacher2 from './componant/Assets/Assets/Teacher3.png';
 import teacher3 from './componant/Assets/Assets/3.png';
 import teacher4 from './componant/Assets/Assets/4.png';
@@ -16,7 +23,7 @@ import imagelesson from './lesson.png';
 import ScrollProgressBar from './componant/ScrollProgressBar';
 function CourseCard({ title, description, image }) 
 {
-    const images = [teacher];
+    const images = [teacher,teacher22,teacher33,teacher44,teacher5,teacher6,teacher7];
 
     return (
       <div className="course-card">
@@ -40,7 +47,7 @@ function APPS() {
   const [name, setName] = useState("");
   const [courses, setCourses] = useState([]);
 
-  const images = [teacher, teacher2];
+  const images = [teacher,teacher22,teacher33,teacher44,teacher5,teacher6,teacher7];
   const images2 = [teacher3, teacher4];
   const squaresRef = useRef([]);
   useEffect(() => {
@@ -311,7 +318,7 @@ const obfuscatedVideoSrc = obfuscateUrl(videoSrc);
               <Link  style={styles.link}><button 
                             onClick={() => scrollToSection('about')} 
                             style={styles.button}>نظام الحصص</button></Link>
-              <Link to="/PricingCard" style={styles.link}><button style={styles.button}> الباقات</button></Link>
+              <Link to="/PricingCard" style={styles.link}><button style={styles.button}> الحصص الشهريه</button></Link>
               <Link to="/ProfileCard" style={styles.link}><button style={styles.button}>المحاضرات</button></Link>
             </div>
           </div>
@@ -559,7 +566,7 @@ const obfuscatedVideoSrc = obfuscateUrl(videoSrc);
     width: "20vw",
     height: "10vh",
     left: "40vw",
-    top: "90%",
+    top: "40%",
     position: "absolute",
     opacity: "0.75",
     background: "white",

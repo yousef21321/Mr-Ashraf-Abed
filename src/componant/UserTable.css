@@ -1,0 +1,32 @@
+.table-container {
+    color: #ffffff; /* White text color for visibility */
+    background-color: #000000; /* Black background color */
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .user-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .user-table th,
+  .user-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #444444;
+  }
+  
+  .user-table th {
+    background-color: #333333; /* Slightly lighter black for header */
+    color: #ffffff; /* White text color */
+  }
+  
+  .user-table tr:hover {
+    background-color: #444444; /* Dark gray for row hover */
+  }
+  
+  p {
+    color: #ffffff; /* White text color for no data message */
+  }
+  
