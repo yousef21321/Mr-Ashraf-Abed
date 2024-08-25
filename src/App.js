@@ -31,6 +31,7 @@ import LessonTable from './componant/LessonTable';
 import ListStudent from './componant/ListStudent';
 import UserTable from './componant/UserTable';
 import CreateCodePage from './componant/CreateCodePage';
+import MessagesTable from './componant/MessagesTable';
 
 function App() {
   return (
@@ -49,7 +50,8 @@ function App() {
         <Route path="/ListStudent" element={<ListStudent />} />
         <Route path="/UserTable" element={<UserTable />} />
         <Route path="/Create" element={<CreateCodePage />} />
-
+        <Route path="/Message" element={<MessagesTable />} />
+        
         
         
         {/* Define other routes here */}

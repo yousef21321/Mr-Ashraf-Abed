@@ -7,6 +7,7 @@ const SubscriptionModal = ({ course, onClose }) => {
   const [subscriptionCode, setSubscriptionCode] = useState("");
   const [ipAddress, setIpAddress] = useState('');
   const [error, setError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null); // Add state for success message
   const navigate = useNavigate();
 
   // Function to fetch IP address
@@ -62,9 +63,10 @@ const SubscriptionModal = ({ course, onClose }) => {
   
       if (response.data.message === "Code validated and updated successfully.") {
         console.log("Code validated successfully");
-        setError(' تم تفعيل المحاضره برجاء الضغط على دخول');
-        navigate('/PricingCard'); // Navigate on success
+        setSuccessMessage('تم تفعيل المحاضره برجاء الضغط على دخول'); // Set success message
+        setError(null); // Clear any previous errors
         localStorage.setItem('subscriptionCode', subscriptionCode); // Store subscriptionCode in localStorage
+        navigate('/PricingCard'); // Navigate on success
       } else {
         setError("الكود غير صالح او يوجد مشكله فى الكود.");
       }
@@ -73,10 +75,9 @@ const SubscriptionModal = ({ course, onClose }) => {
       if (error.response && error.response.data.message === "Code is already used.") {
         setError("🔎 الكود مستخدم من قبل");
       } else {
-        console.log(error.response);
-        console.log(error.response.data.message);
         setError(error.response ? error.response.data.message : "من فضلك ادخل الكود");
       }
+      setSuccessMessage(null); // Clear any previous success messages
     }
   };
 
@@ -93,6 +94,7 @@ const SubscriptionModal = ({ course, onClose }) => {
         />
         <button onClick={handleSubmit}>إرسال</button>
         {error && <p className='error'>{error}</p>}
+        {successMessage && <p className='success'>{successMessage}</p>} {/* Display success message */}
       </div>
     </div>
   );

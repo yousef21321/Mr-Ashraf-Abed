@@ -55,3 +55,28 @@ button {
 button:hover {
   background-color: #759CEA;
 }
+/* subscriptionModal.css */
+
+/* Add this rule for the success message */
+.success {
+  color: green;
+  font-weight: bold;
+}
+
+/* Existing styles */
+.modal {
+  /* your existing styles */
+}
+
+.modal-content {
+  /* your existing styles */
+}
+
+.close {
+  /* your existing styles */
+}
+
+.error {
+  color: red;
+  /* your existing styles */
+}

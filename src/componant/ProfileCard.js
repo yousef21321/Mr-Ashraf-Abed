@@ -22,28 +22,29 @@ const ProfileCard = () => {
   const [error, setError] = useState(null);
   const [deviceFingerprint, setDeviceFingerprint] = useState(null);
   const [errorMessages, setErrorMessages] = useState({});
-  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedLesson, setSelectedLesson] = useState(null);
+  const [quizUrl, setQuizUrl] = useState(""); // State for quiz URL
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchLessons = async () => {
       try {
         const educationalLevelId = localStorage.getItem('package_id');
         const authToken = localStorage.getItem('authToken');
-  
+
         if (!authToken || !educationalLevelId) {
           console.error("No authToken or educationalLevelId found");
           navigate('/login');
           return;
         }
-  
+
         const response = await axios.get(`https://leader-acadmy.hwnix.com/api/lessons/package/${educationalLevelId}`, {
           headers: {
             Authorization: `Bearer ${authToken}`
           }
         });
-        
+
         setLessons(response.data);
       } catch (err) {
         console.error('Error fetching lessons:', err);
@@ -53,7 +54,7 @@ const ProfileCard = () => {
         setLoading(false);
       }
     };
-  
+
     const fetchDeviceFingerprint = async () => {
       try {
         const fp = await FingerprintJS.load();
@@ -67,25 +68,52 @@ const ProfileCard = () => {
       }
     };
 
-    const handleKeydown = (event) => {
-      if (event.key === 'Enter') {
-        // Handle Enter key press
-        console.log('Enter key pressed');
-        // Add your specific logic here
-      } else if (event.key === 'Escape') {
-        // Handle Escape key press
-        console.log('Escape key pressed');
-        // Add your specific logic here
+    const fetchQuizData = async () => {
+      try {
+        const educationalLevelId = localStorage.getItem('package_id');
+        const token = localStorage.getItem('authToken');
+        
+        if (!token || !educationalLevelId) {
+          console.error("No authToken or educationalLevelId found");
+          return;
+        }
+
+        const quizResponse = await fetch(`https://leader-acadmy.hwnix.com/api/mcqs/package/${educationalLevelId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const quizData = await quizResponse.json();
+        if (quizData && quizData.mcqs && quizData.mcqs.length > 0) {
+          setQuizUrl(quizData.mcqs[0].url);
+        }
+      } catch (error) {
+        console.error("Error fetching quiz data:", error);
       }
     };
 
     fetchLessons();
     fetchDeviceFingerprint();
+    fetchQuizData();
 
-    window.addEventListener('keydown', handleKeydown);
+    const handleKeydown = (e) => {
+      if (e.key === 'F12' || (e.ctrlKey && e.key === 'u') || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+    };
+
+    document.addEventListener('keydown', handleKeydown);
+    document.addEventListener('contextmenu', handleContextMenu);
 
     return () => {
-      window.removeEventListener('keydown', handleKeydown);
+      document.body.classList.toggle("landing-page");
+      document.removeEventListener('keydown', handleKeydown);
+      document.removeEventListener('contextmenu', handleContextMenu);
     };
   }, [navigate]);
 
@@ -172,7 +200,17 @@ const ProfileCard = () => {
             />
           )}
         </section>
+        
       </main>
+      <div style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 8, paddingBottom: 8, background: '#5E8CEA', borderRadius: 7, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex' }}>
+          <div style={{ textAlign: 'center', color: 'white', fontSize: 24, fontFamily: 'Lemonada', fontWeight: '380', wordWrap: 'break-word' }}>
+            <a style={{ color: "white" }} href={quizUrl || "#"} onClick={() => {
+              if (!quizUrl) {
+                alert("لم يتم تنزيل امتحان");
+              }
+            }}>الاختبار الشهري</a>
+          </div>
+        </div>
       <Footer />
     </div>
   );
@@ -187,7 +225,7 @@ const styles = {
     color: "#487EEA",
     fontFamily: "Inter",
     fontWeight: "400",
-    padding: "5 16px",
+    padding: "5px 16px",
     cursor: "pointer",
     transition: "background 0.3s, color 0.3s",
   },

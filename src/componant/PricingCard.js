@@ -197,6 +197,8 @@ const PricingCard = () => {
                 <div className="card-footer">
                   <button className="select-button" onClick={() => handleEnterClick(lesson)}>دخول</button>
                   <button className="select-button" onClick={() => handleSubscribeClick(lesson)}>اشتراك</button>
+                  {/* <button className="select-button" onClick={""}>اختبارالشهر</button> */}
+
                 </div>
               </div>
             ))
