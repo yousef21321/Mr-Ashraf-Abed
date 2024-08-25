@@ -32,6 +32,7 @@ import ListStudent from './componant/ListStudent';
 import UserTable from './componant/UserTable';
 import CreateCodePage from './componant/CreateCodePage';
 import MessagesTable from './componant/MessagesTable';
+import Words from './componant/Words';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
         <Route path="/UserTable" element={<UserTable />} />
         <Route path="/Create" element={<CreateCodePage />} />
         <Route path="/Message" element={<MessagesTable />} />
+        <Route path="/Words" element={<Words />} />
         
         
         
