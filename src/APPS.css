@@ -22,6 +22,7 @@
   font-weight: 575;
   word-wrap: break-word;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
 }
 
 .course-cards {
@@ -126,4 +127,34 @@
   .lessons-section {
       grid-template-columns: 1fr; /* 1 card per row on small screens */
   }
+}
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animiL{
+  animation: slideInFromLeft 1.0s ease-out forwards;
+
+}
+.animiR{
+  animation: slideInFromRight 1.0s ease-out forwards;
+
 }

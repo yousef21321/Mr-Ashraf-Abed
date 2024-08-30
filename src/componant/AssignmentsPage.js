@@ -60,7 +60,7 @@ const AssignmentsPage = () => {
             color: 'red',
         },
         score: {
-            color:'#000',
+            color: '#000',  // This sets the color to black
             textAlign: 'center',
             fontSize: '20px',
             marginTop: '20px',
@@ -177,9 +177,9 @@ const AssignmentsPage = () => {
                 Back
             </button>
             {submitted && (
-                <div style={styles.score}>
-                    <p>Your score: {score} out of {questions.length}</p>
-                </div>
+                <h1 style={styles.score}>
+                    Your score: {score} out of {questions.length}
+                </h1>
             )}
         </div>
     );

@@ -44,7 +44,7 @@ const Signup = () => {
   return (
     <div className="signup-container">
   
-      <div className="signup-form">
+      <div className="signup-form animiL">
         <div className="signup-header">
           <h2>Get Started</h2>
           <p>
@@ -132,7 +132,7 @@ const Signup = () => {
       <div className="login-button">
           <button onClick={BachHome}>الرئسيه</button>
         </div>
-        <div className="signup-banner">
+        <div className="signup-banner animiR">
         <div className="gradient-overlay"></div>
         <div className="banner-text">Start Your English Journey Today</div>
       </div>

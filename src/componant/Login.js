@@ -41,17 +41,17 @@ const BachHome =async (e) => {
     <div className="login-container">
     <div className="login-form">
       <div className="login-header">
-        <div className="login-title">Log In</div>
-        <div className="signup-link">
+        <div className="login-title animiL">Log In</div>
+        <div className="signup-link animiL">
           <span>Don’t have an Account? </span>
-          <span className="create-account"><a href='/Signup'>Create Account</a></span>
+          <span className="create-account animiL"><a href='/Signup'>Create Account</a></span>
         </div>
       </div>
-      <form className="input-group" onSubmit={handleSubmit}>
-        <div className="input-group">
+      <form className="input-group animiL" onSubmit={handleSubmit}>
+        <div className="input-group animiL">
           <div className="input-label">Mobile Number</div>
           <div className="input-field">
-            <input className="input-field"
+            <input className="input-field animiL"
               type="text"
               placeholder="010000000"
               value={phone}
@@ -59,7 +59,7 @@ const BachHome =async (e) => {
             />
           </div>
         </div>
-        <div className="input-group">
+        <div className="input-group animiL">
           <div className="input-label">Password</div>
           <div className="input-field">
             <input className="input-field"
@@ -71,7 +71,7 @@ const BachHome =async (e) => {
           </div>
         </div>
 
-        <div className="login-button">
+        <div className="login-button animiL">
           <button type="submit">Log In</button>
         </div>
       </form>
@@ -84,7 +84,7 @@ const BachHome =async (e) => {
       {response && <div className="response">Login Successful</div>}
       {error && <div className="error">{error}</div>}
     </div>
-    <div className="login-banner">
+    <div className="login-banner animiR">
       <div className="banner-overlay" />
       <div className="banner-text2">
         Unlock Your English Potential Today!

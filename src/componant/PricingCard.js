@@ -164,7 +164,7 @@ const PricingCard = () => {
       <div className="profile-card">
         <header className="profile-header">
           <div className="profile-header-content">
-            <button className="nav-button create-account-button" onClick={handleLogout}>تسجيل الخروج</button>
+            <button className="nav-button create-account-button animiL" onClick={handleLogout}>تسجيل الخروج</button>
             <div className="social-links">
               <SocialIcon src={facebookImage} alt="Facebook" href="https://www.facebook.com/AshrafAbed2020/photos" />
               <SocialIcon src={youtube} alt="YouTube" href="https://www.youtube.com/channel/UC2_e1-9trV5x3beP_wXQfpw" />
@@ -173,11 +173,11 @@ const PricingCard = () => {
               <Link to="/" style={styles.link}><button style={styles.button}>الرئيسيه</button></Link>
               <Link to="/" style={styles.link}><button style={styles.button}>عن المنصه</button></Link>
             </div>
-            <div className="profile-name">Mr.Ashraf Abed</div>
+            <div className="profile-name animiR">Mr.Ashraf Abed</div>
           </div>
         </header>
 
-        <div className="pricing-cards">
+        <div className="pricing-cards animiL">
           {loading ? (
             <p>Loading...</p>
           ) : error ? (

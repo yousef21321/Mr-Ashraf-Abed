@@ -110,17 +110,17 @@ export default function Video() {
         <header className="profile-header">
           <div className="profile-header-content">
             <div className="logout-button">
-              <button className="nav-button create-account-button" onClick={handleLogout}>تسجيل الخروج</button>
+              <button className="nav-button create-account-button animiR" onClick={handleLogout}>تسجيل الخروج</button>
             </div>
             <div className="logout-button">
-              <button className="nav-button create-account-button" onClick={handleLec}>المحاضرات</button>
+              <button className="nav-button create-account-button animiL" onClick={handleLec}>المحاضرات</button>
             </div>
-            <div className="profile-name">Mr.Ashraf Abed</div>
+            <div className="profile-name animiR">Mr.Ashraf Abed</div>
           </div>
         </header>
 
         <section className="video-section">
-          <div className="video-container">
+          <div className="video-container animiT">
             {videoUrl ? (
               <iframe
                 title="Video"
@@ -138,13 +138,13 @@ export default function Video() {
           </div>
         </section>
 
-        <div style={{ width: '100%', height: '100%', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-end', gap: 28, display: 'inline-flex' }}>
+        <div className="animiR" style={{ width: '100%', height: '100%', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-end', gap: 28, display: 'inline-flex' }}>
           <h2 style={{ textAlign: 'center', fontSize: 24, fontFamily: 'Lemonada', fontWeight: '380', wordWrap: 'break-word' }}>{videoTitle}</h2>
           <p style={{ textAlign: 'center', fontSize: 24, fontFamily: 'Lemonada', fontWeight: '380', wordWrap: 'break-word' }}>{videoDescription}</p>
           <div style={{ justifyContent: 'flex-start', alignItems: 'center', gap: 15, display: 'inline-flex' }}>
             <div style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 8, paddingBottom: 8, background: '#5E8CEA', borderRadius: 7, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex' }}>
-              <div style={{ textAlign: 'center', color: 'white', fontSize: 24, fontFamily: 'Lemonada', fontWeight: '380', wordWrap: 'break-word' }}>
-                <a style={{color:"white"}} href="/AssignmentsPage">الواجب</a>
+              <div className="animiR" style={{ textAlign: 'center', color: 'white', fontSize: 24, fontFamily: 'Lemonada', fontWeight: '380', wordWrap: 'break-word' }}>
+                <a style={{color:"white"}} href="/AssignmentsPage" >الواجب</a>
               </div>
               <div style={{ width: 28, height: 28, position: 'relative' }}>
                 <div style={{ width: 21, height: 21, left: 0, top: 1.16, position: 'absolute', border: '2px white solid' }}></div>

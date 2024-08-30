@@ -149,7 +149,7 @@ const ProfileCard = () => {
     <div className="profile-card">
       <header className="profile-header">
         <div className="profile-header-content">
-          <button className="nav-button create-account-button" onClick={handleLogout}>تسجيل الخروج</button>
+          <button className="nav-button create-account-button animiR" onClick={handleLogout}>تسجيل الخروج</button>
           <div className="social-links">
             <SocialIcon src={facebookImage} alt="Facebook" href="https://www.facebook.com/AshrafAbed2020/photos" />
             <SocialIcon src={youtube} alt="YouTube" href="https://www.youtube.com/channel/UC2_e1-9trV5x3beP_wXQfpw" />
@@ -159,7 +159,7 @@ const ProfileCard = () => {
             <Link to="/" style={styles.link}><button style={styles.button}>عن المنصه</button></Link>
             <Link to="/PricingCard" style={styles.link}><button style={styles.button}>الحصص الشهريه</button></Link>
           </div>
-          <div className="profile-name">Mr.Ashraf Abed</div>
+          <div className="profile-name animiL">Mr.Ashraf Abed</div>
         </div>
       </header>
       <main className="profile-main">
@@ -167,10 +167,10 @@ const ProfileCard = () => {
           {loading ? (
             <p>Loading...</p>
           ) : error ? (
-            <p>❌❌🔎لا يوجد محاضرات </p>
+            <p className='animiL'>❌❌🔎لا يوجد محاضرات </p>
           ) : (
             Array.isArray(lessons) && lessons.map(lesson => (
-              <div key={lesson.id} className="lesson-card">
+              <div key={lesson.id} className="lesson-card animiL">
                 <img className="lesson-image" src="/images/1.png" alt="Lesson" />
                 <div className="lesson-info">
                   <div className="lesson-header">
@@ -187,7 +187,7 @@ const ProfileCard = () => {
                     <p className='error'>❌❌🔎لا يوجد محاضرات </p>
                   )}
                   <div className="lesson-buttons">
-                    <button className="lesson-button enter-lecture-button" onClick={() => handleSubmit(lesson)}>دخول للمحاضرة</button>
+                    <button className="lesson-button enter-lecture-button animiR" onClick={() => handleSubmit(lesson)}>دخول للمحاضرة</button>
                   </div>
                 </div>
               </div>
@@ -202,9 +202,9 @@ const ProfileCard = () => {
         </section>
         
       </main>
-      <div style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 8, paddingBottom: 8, background: '#5E8CEA', borderRadius: 7, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex' }}>
+      <div className='animiR' style={{ paddingLeft: 16, paddingRight: 16, paddingTop: 8, paddingBottom: 8, background: '#5E8CEA', borderRadius: 7, justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex' }}>
           <div style={{ textAlign: 'center', color: 'white', fontSize: 24, fontFamily: 'Lemonada', fontWeight: '380', wordWrap: 'break-word' }}>
-            <a style={{ color: "white" }} href={quizUrl || "#"} onClick={() => {
+            <a  style={{ color: "white" }} href={quizUrl || "#"} onClick={() => {
               if (!quizUrl) {
                 alert("لم يتم تنزيل امتحان");
               }

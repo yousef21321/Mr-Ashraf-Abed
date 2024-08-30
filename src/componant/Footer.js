@@ -17,7 +17,7 @@ function Footer() {
         <>
             {/* First Container */}
             <div style={styles.footerContainer}>
-                <div style={styles.footerContent}>
+                <div  className='animiB' style={styles.footerContent}>
                     <div style={styles.footerColumn}>
                         <div style={styles.footerText}></div>
                         <div style={styles.footerLinks}>

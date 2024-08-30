@@ -4,6 +4,7 @@ import axios from 'axios';
 const ScoresTable = () => {
     const [scores, setScores] = useState([]);
     const [error, setError] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         const fetchScores = async () => {
@@ -18,6 +19,14 @@ const ScoresTable = () => {
 
         fetchScores();
     }, []);
+
+    const handleSearchChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
+    const filteredScores = scores.filter(score =>
+        score.lesson.description_assistant.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     const styles = {
         table: {
@@ -40,6 +49,12 @@ const ScoresTable = () => {
             textAlign: 'center',
             marginTop: '20px',
         },
+        searchInput: {
+            padding: '10px',
+            margin: '20px 0',
+            width: '100%',
+            boxSizing: 'border-box',
+        },
     };
 
     if (error) {
@@ -49,6 +64,13 @@ const ScoresTable = () => {
     return (
         <div>
             <h1>Scores Table</h1>
+            <input
+                type="text"
+                placeholder="Search by Lesson Description"
+                value={searchTerm}
+                onChange={handleSearchChange}
+                style={styles.searchInput}
+            />
             <table style={styles.table}>
                 <thead>
                     <tr>
@@ -57,18 +79,16 @@ const ScoresTable = () => {
                         <th style={styles.th}>Lesson Title</th>
                         <th style={styles.th}>Lesson Description</th>
                         <th style={styles.th}>Phone Number</th>
-
                     </tr>
                 </thead>
                 <tbody>
-                    {scores.map((score) => (
+                    {filteredScores.map((score) => (
                         <tr key={score.id}>
                             <td style={styles.td}>{score.score}</td>
                             <td style={styles.td}>{score.user.name}</td>
                             <td style={styles.td}>{score.lesson.title}</td>
                             <td style={styles.td}>{score.lesson.description_assistant}</td>
                             <td style={styles.td}>{score.user.phone}</td>
-
                         </tr>
                     ))}
                 </tbody>
