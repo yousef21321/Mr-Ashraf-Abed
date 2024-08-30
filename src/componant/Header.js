@@ -131,17 +131,17 @@ function Header() {
   style={{
     position: 'absolute', // Or 'relative' depending on your layout needs
     top: '50px', // Adjust this value to control vertical positioning
-    left: '6%', // Center horizontally if needed (optional)
+    left: '1%', // Center horizontally if needed (optional)
     transform: 'translateX(-50%)', // Center horizontally if needed (optional)
     display: 'flex',
     justifyContent: 'center', // Center items horizontally
     alignItems: 'center', // Center items vertically (if needed)
-    gap: '1vw', // Space between icons
+    gap: '2vw', // Space between icons
   }}
 >
   <div
     style={{
-      width: '3vw', // Adjusted for responsiveness
+      width: '7vw', // Adjusted for responsiveness
       height: '3vw', // Adjusted for responsiveness
       background: 'white',
       borderRadius: '7px',
@@ -170,7 +170,7 @@ function Header() {
   </div>
   <div
     style={{
-      width: '3vw', // Adjusted for responsiveness
+      width: '7vw', // Adjusted for responsiveness
       height: '3vw', // Adjusted for responsiveness
       background: 'white',
       borderRadius: '7px',

@@ -213,7 +213,7 @@ const styles = {
     margin: "20px 0", // Adds some spacing around the image
   },
   image: {
-    width: "550px", // Small size
+    width: "342px", // Small size
     height: "auto", // Maintain aspect ratio
     border: "5px solid white", // White frame
     borderRadius: "10px", // Optional: Rounded corners
