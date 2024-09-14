@@ -64,7 +64,7 @@ function Footer() {
        
             <footer style={styles.developerFooter}>
                 <div style={styles.developerText}>
-                    Developed by <a style={styles.developerLink} href='https://www.linkedin.com/in/youssef-abd0-601b9a2aa/'>Yousef Abdo</a>, <a style={styles.developerLink} href='https://www.linkedin.com/in/mostafa-fayez-082b5321a/'>Mostafa Fayiz</a>. All Copy Rights Reserved © 2024
+                    Developed by <a style={styles.developerLink} href='https://www.linkedin.com/in/youssef-abd0-601b9a2aa/'>Yousef Abdo</a>, <a style={styles.developerLink} href='https://www.linkedin.com/in/mostafa-fayez-082b5321a/'>Mostafa Fayez</a>. All Copy Rights Reserved © 2024
                 </div>
             </footer>
         </>

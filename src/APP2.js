@@ -514,16 +514,17 @@ const obfuscatedVideoSrc = obfuscateUrl(videoSrc);
       </div>
     </div>
     <div style={{ width: "50vw", height: "35vw", background: "#D9D9D9", borderRadius: "20px" }}>
-    <iframe
-      style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '20px' }}
-      src={deobfuscateUrl(obfuscatedVideoSrc)}
-      title="Google Drive file"
-      frameBorder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerPolicy="strict-origin-when-cross-origin"
-      allowFullScreen
-    />
-    </div>
+  <iframe 
+    style={{ width: "100%", height: "100%" }} 
+    src="https://www.youtube.com/embed/_3awAWDRl6g?si=ZGGL4MJAXwTZRzD5" 
+    title="YouTube video player" 
+    frameBorder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerPolicy="strict-origin-when-cross-origin" 
+    allowFullScreen
+  ></iframe>
+</div>
+
   </div>
 </div>
 

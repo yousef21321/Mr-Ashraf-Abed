@@ -83,7 +83,7 @@ function About() {
     setCurrentImageIndex2((prevIndex2) => (prevIndex2 === images2.length - 1 ? 0 : prevIndex2 + 1));
   };
 
-  const videoSrc = "https://drive.google.com/file/d/1poPs2t3VRiywXlE_sCeZh0SgFF5o72v5/preview";
+  const videoSrc = "https://www.youtube.com/watch?v=_3awAWDRl6g";
 
   const obfuscateUrl = (url) => {
     return btoa(url);
@@ -120,15 +120,19 @@ function About() {
           </div>
         </div>
         <div style={styles.videoContainer}>
-          <iframe
-            style={styles.video}
-            src={deobfuscateUrl(obfuscatedVideoSrc)}
-            title="Google Drive file"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          />
+       
+
+        <div style={{ width: "50vw", height: "35vw", background: "#D9D9D9", borderRadius: "20px" }}>
+  <iframe 
+    style={{ width: "100%", height: "100%" }} 
+    src="https://www.youtube.com/embed/_3awAWDRl6g?si=ZGGL4MJAXwTZRzD5" 
+    title="YouTube video player" 
+    frameBorder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerPolicy="strict-origin-when-cross-origin" 
+    allowFullScreen
+  ></iframe>
+</div>
         </div>
       </div>
     </div>

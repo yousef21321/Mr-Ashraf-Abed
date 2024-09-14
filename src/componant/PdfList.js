@@ -13,7 +13,9 @@ const PdfList = () => {
     const fetchPdfs = async () => {
       try {
         const lessonId = localStorage.getItem('lesson_id') || 1; // استخدام default إذا لم يتم العثور على lesson_id
-        const response = await axios.get(`https://leader-acadmy.hwnix.com/api/pdfs/lesson/${lessonId}`);
+        const edu = localStorage.getItem('educationalLevelId') || 1; // استخدام default إذا لم يتم العثور على lesson_id
+
+        const response = await axios.get(`https://leader-acadmy.hwnix.com/api/pdfs/lesson/${edu}`);
         setPdfs(response.data.pdfs);
       } catch (error) {
         setError('❌لا يوجد ملفات ');
